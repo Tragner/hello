@@ -1,0 +1,15 @@
+{% extends 'layouts/main.html' %}
+{% block title %}New{% endblock %}
+{% block body %}
+<div class="container" style="max-width: 500px">
+<h1 style="color: orange">Add Experience</h1>
+<form action="{{ url_for('new_experience') }}" method="post" enctype="multipart/form-data">
+    {{ form.csrf_token }}
+    <p>{{ form.company.label }} {{ form.company(class="form-control") }}</p>
+    <p>{{ form.role.label }} {{ form.role(class="form-control") }}</p>
+    <p>{{ form.start.label }} {{ form.start(class="form-control") }}</p>
+    <p>{{ form.end.label }} {{ form.end(class="form-control") }}</p>
+    <p>{{form.submit(class='btn btn-warning')}}</p>
+</form>
+</div>
+{% endblock %}

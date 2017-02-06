@@ -1,0 +1,33 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Curriculum Vitae{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="panel panel-default" style="padding: 2em; background-color: aquamarine" >
+    <section style="color: white">
+        <h1>Curriculum Vitae</h1>
+        <h2>Sarah Trägner</h2>
+        <h2>19/06/1991</h2>
+    </section>
+    </div>
+    <section>
+        <hr>
+        {% if experience %}
+            <h2 style="color: silver">Experiencia
+                <a href="{{ url_for('new_experience') }}" class="btn btn-success">Add info</a></h2>
+            {% for item in experience %}
+                <div class="panel panel-default" style="max-width: 500px">
+                      <div class="panel-heading" style="background-color: turquoise; color: teal">
+                          <strong>{{ item.company }}</strong> {{ item.start }} - {{ item.end }}
+                          <a href="{{ url_for('edit_experience', id=item.id) }}" class="btn btn-primary">Edit</a>
+                          <a href="{{ url_for('delete_experience', id=item.id) }}"
+                         class="btn btn-danger pull-right" style="padding: -1em">X</a>
+                      </div>
+                      <div class="panel-body" style="background-color: lightcyan; color: mediumturquoise">
+                        {{ item.role }}
+                      </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </section>
+</div>
+{% endblock %}

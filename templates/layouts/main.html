@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %} | Curriculum Vitae </title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+</head>
+
+<body style="background-color: azure">
+<div class="container">
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for categoria, message in messages %}
+            <div class="alert alert-{{ categoria }}"><strong>{{ message }}</strong></div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+</div>
+{% block body %} {% endblock %}
+{% if session['email'] %}
+Bienvenido {{ session['email'] }}
+    <a href="{{ url_for('logout') }}" class="btn btn-danger" style="margin-left: 5em">Salir</a>
+{% endif %}
+</body>
+</html>

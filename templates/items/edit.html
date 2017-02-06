@@ -1,0 +1,15 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Edit{% endblock %}
+{% block body %}
+<div class="container">
+<h1>Editar Post</h1>
+<form action="" method="post" enctype="multipart/form-data">
+    {{ form.csrf_token }}
+    <p>{{ form.company.label }} {{ form.company(class="form-control") }}</p>
+    <p>{{ form.role.label }} {{ form.role(class="form-control") }}</p>
+    <p>{{ form.start.label }} {{ form.start(class="form-control") }}</p>
+    <p>{{ form.end.label }} {{ form.end(class="form-control") }}</p>
+    <p>{{ form.submit(class='btn btn-success') }}</p>
+</form>
+</div>
+{% endblock %}
